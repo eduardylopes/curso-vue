@@ -1,0 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ contador }}</p>
+  <p>{{ contador > 15 ? 'Mair do que 15' : 'Menor do que 15' }}</p>
+  <button v-on:click="somar()">Incrementar 1</button>
+  <button v-on:click="decrementar()">Decrementar 1</button>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      contador: 10,
+    },
+    methods: {
+      somar() {
+        this.contador++;
+      },
+      decrementar() {
+        this.contador--;
+      },
+    },
+  });
+</script>
