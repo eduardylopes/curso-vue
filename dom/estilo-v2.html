@@ -16,11 +16,6 @@
     background-color: red;
   }
 
-  /* Teste com identificadores com '-' */
-  /* .cor-1 {
-    background-color: red;
-  } */
-
   .c2 {
     background-color: green;
   }
@@ -31,14 +26,16 @@
 </style>
 
 <div id="app">
-  <div
+  <!-- Modo verboso sem usar computed. -->
+  <!-- <div
     class="demo"
-    :class="{c1: aplicarC1}"
+    :class="{c1: aplicarC1, c2: !aplicarC1}"
     @click="aplicarC1 = !aplicarC1"
-  ></div>
-  <!-- Quando houver um estilo com '-' ele identifica com um sinal do javascript, então faz se necessário utilizar aspas -->
-  <!-- <div class="demo" :class="{'cor-1': aplicarC1}"></div> -->
-  <div class="demo" :class="{c1: aplicarC1}"></div>
+  ></div> -->
+
+  <!-- Modo mais limpo usando computed -->
+  <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
+  <div class="demo"></div>
   <div class="demo"></div>
 </div>
 
@@ -47,6 +44,14 @@
     el: '#app',
     data: {
       aplicarC1: false,
+    },
+    computed: {
+      estilo1() {
+        return {
+          c1: this.aplicarC1,
+          c2: !this.aplicarC1,
+        };
+      },
     },
   });
 </script>
