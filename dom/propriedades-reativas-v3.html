@@ -15,6 +15,7 @@
       contador: 0,
       contador2: 0,
     },
+    // As funções que ficam dentro de computed são chamadas sempre que as variáveis internas a ela mudam.
     computed: {
       resultado() {
         console.log('método resultado chamado...');
@@ -23,6 +24,7 @@
     },
     watch: {
       contador(novo, antigo) {
+        console.log(novo, antigo);
         setTimeout(() => {
           this.contador = 0;
         }, 2000);
@@ -35,6 +37,7 @@
       diminuir() {
         this.contador--;
       },
+      // O método abaixo é chamado sempre que algo é renderizado na tela.
       // resultado() {
       //   console.log('método resultado chamado...');
       //   return this.contador >= 5 ? 'Maior ou igual a 5' : 'Menor ou igual a 5';
